@@ -35,16 +35,16 @@
       "path": "cz-customizable"
     }
   },
-  "husky": {
-    "hooks": {
-      "commit-msg": "commitlint -e $HUSKY_GIT_PARAMS",
-      "pre-commit": "lint-staged"
-    }
-  },
   "lint-staged": {
-    "src/**/*.{js,vue}": [
-      "eslint --fix --ext .js,.vue",
-      "git add"
+    "*.{scss,vue}": [
+      "stylelint --fix"
+    ],
+    "*.{js,ts,vue}": [
+      "vue-cli-service lint"
     ]
+  },
+  "gitHooks": {
+    "pre-commit": "lint-staged",
+    "commit-msg": "commitlint -eV"
   }
 }
